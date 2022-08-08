@@ -8,7 +8,16 @@ public interface Speaker {
     SpeakerData speak(String word, Accent accent);
 
     default SpeakerData speak(String word) {
-        return speak(word, Accent.US);
+        SpeakerData usAccent = speak(word, Accent.US);
+        SpeakerData ukAccent = speak(word, Accent.UK);
+
+        if (usAccent != SpeakerData.EMPTY) {
+            return usAccent;
+        } else if (ukAccent != SpeakerData.EMPTY) {
+            return usAccent;
+        } else {
+            return SpeakerData.EMPTY;
+        }
     }
 
     enum Accent {

@@ -3,6 +3,7 @@ package uet.oop.dictionary.dao;
 import uet.oop.dictionary.data.Definition;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 
 public class DefinitionDao extends BaseDao<Definition> {
 
-    protected DefinitionDao(String database) throws SQLException {
+    public DefinitionDao(String database) throws SQLException {
         super(database);
     }
 
@@ -101,7 +102,7 @@ public class DefinitionDao extends BaseDao<Definition> {
         return Optional.empty();
     }
 
-    public List<Definition> getWordDefs(int word_id) {
+    public List<Definition> getWordDefs(int word_id) throws SQLException {
         String getAllWordDefsSQL = "SELECT * FROM definitions WHERE word_id = ?;";
 
         try (var statement = getConn()
@@ -114,9 +115,9 @@ public class DefinitionDao extends BaseDao<Definition> {
         } catch (SQLException e) {
             Logger.getLogger(getClass().getName())
                     .log(Level.SEVERE, e.getMessage(), e);
-        }
 
-        return Collections.emptyList();
+            throw new SQLException("get word definitions failed.", e);
+        }
     }
 
     @Override
@@ -149,5 +150,20 @@ public class DefinitionDao extends BaseDao<Definition> {
             defs.add(def);
         }
         return defs;
+    }
+
+    @Override
+    public int total() throws SQLException {
+        String countSQL = "SELECT COUNT(*) from definitions;";
+        try (PreparedStatement statement = conn.prepareStatement(countSQL)) {
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException ex) {
+            throw new SQLException("Can't get the definitions count", ex);
+        }
+
+        return 0;
     }
 }

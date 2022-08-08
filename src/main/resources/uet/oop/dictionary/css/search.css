@@ -1,0 +1,13 @@
+.search-bar .search {
+    -fx-font-size: 20;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+
+.my-context-menu {
+    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
+    -fx-background-color: darkgreen;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}

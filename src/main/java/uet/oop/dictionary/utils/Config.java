@@ -5,4 +5,6 @@ public final class Config {
     public static final String LABAN_API = "https://dict.laban.vn/ajax/getsound";
 
     public static final String DATABASE_URL = "jdbc:sqlite:dictionaries.db";
+
+    public static final Integer MAX_SUGGESTIONS = 10;
 }

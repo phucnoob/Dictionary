@@ -38,4 +38,6 @@ public abstract class BaseDao<T> implements Closeable {
     public abstract boolean delete(int id) throws SQLException;
     public abstract Optional<T> get(int id) throws SQLException;
     public abstract List<T> getAll(int limit) throws SQLException;
+
+    public abstract int total() throws SQLException;
 }

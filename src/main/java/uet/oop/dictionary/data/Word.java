@@ -63,4 +63,11 @@ public class Word {
     public void setDefinitions(List<Definition> definitions) {
         this.definitions = definitions;
     }
+
+    @Override
+    public String toString() {
+        return "Word{" +
+                "target='" + target + '\'' +
+                '}';
+    }
 }

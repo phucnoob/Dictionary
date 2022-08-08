@@ -1,0 +1,25 @@
+
+.definitions {
+    -fx-padding: 8;
+}
+
+.definitions>.type {
+    -fx-text-fill: #2c3e50;
+    -fx-font-size: 22;
+    -fx-font-weight: 100;
+    /*-fx-background-color: #ecf0f1;*/
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    /*-fx-border-color: #34495e;*/
+    -fx-padding: 6;
+}
+
+.definitions .explain {
+    -fx-padding: 0 0 0 24;
+}
+
+.definitions .explain .label {
+    -fx-text-fill: #2f3640;
+    -fx-font-size: 18;
+    -fx-wrap-text: true;
+}

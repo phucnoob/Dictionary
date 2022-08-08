@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.*?>
+<?import uet.oop.dictionary.ui.SearchBar?>
+<?import uet.oop.dictionary.ui.WordView?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="uet.oop.dictionary.controllers.Home"
+           stylesheets="@../css/main.css"
+>
+    <VBox prefHeight="400.0" prefWidth="600.0"
+          styleClass="container"
+        StackPane.alignment="CENTER">
+        <padding>
+            <Insets left="16" right="16" />
+        </padding>
+        <SearchBar fx:id="search">
+            <VBox.margin>
+                <Insets left="12" right="12" top="8" />
+            </VBox.margin>
+        </SearchBar>
+        <VBox VBox.vgrow="ALWAYS">
+            <VBox.margin>
+                <Insets left="12" right="12" top="8" />
+            </VBox.margin>
+            <VBox VBox.vgrow="ALWAYS" styleClass="content">
+                <ScrollPane fx:id="content"
+                            VBox.vgrow="ALWAYS"
+                            fitToWidth="true"
+                            hbarPolicy="NEVER">
+                </ScrollPane>
+            </VBox>
+        </VBox>
+    </VBox>
+</StackPane>

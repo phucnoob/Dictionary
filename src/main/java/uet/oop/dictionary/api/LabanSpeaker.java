@@ -23,7 +23,6 @@ public class LabanSpeaker implements Speaker {
             Content content = Request.get(uri).execute().returnContent();
             json = content.asString(StandardCharsets.UTF_8);
 
-            System.out.println(json);
             ObjectMapper mapper = new ObjectMapper();
             return mapper.readValue(json, SpeakerData.class);
         } catch (IOException | URISyntaxException e) {

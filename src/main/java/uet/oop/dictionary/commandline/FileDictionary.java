@@ -41,7 +41,7 @@ public class FileDictionary implements Dictionary {
      * Look up a word target in the word list.
      * @param target - The word target want to look.
      * @return Optional<data.Word> or empty Optional if not found.
-     * Example: new Dictionary.get("book");
+     * Example: new Dictionary.lookup("book");
      */
     @Override
     public Optional<Word> get(String target) {

@@ -1,0 +1,66 @@
+.word-view {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: transparent;
+    -fx-padding: 8;
+}
+
+.word {
+    -fx-border-width: 1;
+    -fx-border-color: #000;
+    -fx-border-style: solid;
+    -fx-background-color: #ecf0f1;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-pref-height: 80;
+    -fx-padding: 8;
+    -fx-spacing: 12;
+}
+
+.word .vbox {
+    -fx-padding: 8;
+}
+
+.word>.button {
+    -fx-background-color: transparent;
+    -fx-pref-height: 32;
+    -fx-pref-width: 32;
+    -fx-border-radius: 32;
+    -fx-background-radius: 32;
+    -fx-border-style: solid;
+    -fx-border-color: transparent;
+}
+
+.word>.button:hover {
+    -fx-background-color: #fff;
+    -fx-border-color: #888;
+}
+
+.target {
+    -fx-font-size: 24;
+    -fx-font-weight: 700;
+    -fx-text-fill: #2c3e50;
+}
+
+.phonetics {
+    -fx-font-size: 18;
+    -fx-text-fill: #95a5a6;
+    -fx-font-style: italic;
+}
+
+.update-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.delete-btn {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+.update-btn:hover .ikonli-font-icon {
+    -fx-icon-color: #f39c12;
+}
+
+.delete-btn:hover .ikonli-font-icon {
+    -fx-icon-color: #e74c3c;
+}

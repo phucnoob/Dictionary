@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root type="uet.oop.dictionary.ui.DefinitionView"
+         xmlns="http://javafx.com/javafx"
+         stylesheets="@../css/definition-view.css"
+         styleClass="definitions"
+         xmlns:fx="http://javafx.com/fxml">
+    <Label fx:id="wordType" styleClass="type" text="Danh từ" />
+    <VBox fx:id="explains" styleClass="explain" >
+
+    </VBox>
+</fx:root>

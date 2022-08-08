@@ -54,4 +54,12 @@ public class Definition {
     public void setWordId(int wordId) {
         this.wordId = wordId;
     }
+
+    @Override
+    public String toString() {
+        return "Definition{" +
+                "wordType='" + wordType + '\'' +
+                ", explain='" + explain + '\'' +
+                '}';
+    }
 }

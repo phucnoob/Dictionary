@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface Dictionary {
     boolean add(Word word);
 
-    Optional<Word> get(String target);
+    Optional<Word> lookup(String target);
 
     boolean update(String target, Word word);
 

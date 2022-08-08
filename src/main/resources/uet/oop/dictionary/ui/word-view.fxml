@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<fx:root xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         stylesheets="@../css/word-view.css"
+         styleClass="word-view"
+         type="javafx.scene.layout.VBox">
+    <HBox styleClass="word" alignment="CENTER_LEFT">
+        <VBox styleClass="vbox" spacing="4">
+            <Label fx:id="target" styleClass="target" text="breakfast" />
+            <Label fx:id="phonetics" styleClass="phonetics" text="həlˈoʊ" />
+        </VBox>
+        <Button fx:id="playBtn">
+            <graphic>
+                <FontIcon iconColor="#333" iconLiteral="bi-volume-up" iconSize="24"/>
+            </graphic>
+        </Button>
+        <HBox HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT" spacing="16">
+            <Button styleClass="update-btn" fx:id="updateBtn">
+                <graphic>
+                    <FontIcon iconLiteral="bi-pencil-square" iconSize="24"/>
+                </graphic>
+            </Button>
+
+            <Button styleClass="delete-btn" fx:id="deleteBtn">
+                <graphic>
+                    <FontIcon iconLiteral="bi-trash" iconSize="24"/>
+                </graphic>
+            </Button>
+        </HBox>
+    </HBox>
+    <VBox fx:id="definitions" />
+</fx:root>

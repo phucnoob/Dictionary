@@ -93,7 +93,7 @@ class DefinitionDaoTest {
     }
 
     @Test
-    void getWordDefs() {
+    void getWordDefs() throws SQLException {
         DefinitionDao definitionDao = new DefinitionDao(conn);
         WordDao wordDao = new WordDao(conn);
 

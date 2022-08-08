@@ -119,6 +119,25 @@ class WordDaoTest {
         assertEquals(5, getWords.size());
     }
 
+    @Test
+    void prefixSearch() {
+        var dao = new WordDao(conn);
+        Word word = new Word("book", "/buk/", Collections.emptyList());
+        Word word1 = new Word("book1", "/buk/", Collections.emptyList());
+        Word word2 = new Word("book2", "/buk/", Collections.emptyList());
+        Word word3 = new Word("book3", "/buk/", Collections.emptyList());
+        Word word4 = new Word("book4", "/buk/", Collections.emptyList());
+        dao.add(word);
+        dao.add(word1);
+        dao.add(word2);
+        dao.add(word3);
+        dao.add(word4);
+
+        List<Word> searched = dao.prefixSearch("book");
+
+        assertEquals(5, searched.size());
+    }
+
     @AfterEach
     void clean() throws SQLException {
         conn.rollback();

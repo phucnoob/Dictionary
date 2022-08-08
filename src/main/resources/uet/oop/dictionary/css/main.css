@@ -26,7 +26,7 @@
 
 .container {
     -fx-max-width: 600;
-    /*-fx-background-color: #f4f4f4;*/
+    -fx-background-color: #f4f4f4;
 }
 .content {
     -fx-background-color: #f8f8f8;

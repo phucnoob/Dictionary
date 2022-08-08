@@ -56,12 +56,13 @@ public class WordView extends VBox implements Initializable {
     }
 
     public void speakWord() {
-        new Thread(new PlaySound()).start();
+        Thread thread = new Thread(new PlaySound());
+        thread.setDaemon(true);
+        thread.start();
     }
 
     public void setWord(Word word) {
         currentWord = word;
-        new Thread(new FetchData(word.getTarget())).start();
 
         // Update UI
         target.setText(word.getTarget());
@@ -93,6 +94,7 @@ public class WordView extends VBox implements Initializable {
     private class PlaySound implements Runnable {
         @Override
         public void run() {
+            speakerData = speaker.speak(currentWord.getTarget());
             if (speakerData == Speaker.SpeakerData.EMPTY) {
                 return;
             }
@@ -102,16 +104,4 @@ public class WordView extends VBox implements Initializable {
         }
     }
 
-    private class FetchData implements Runnable {
-        private String target;
-
-        public FetchData(String target) {
-            this.target = target;
-        }
-
-        @Override
-        public void run() {
-            speakerData = speaker.speak(target);
-        }
-    }
 }

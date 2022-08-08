@@ -4,6 +4,7 @@
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextArea?>
 <fx:root type="javafx.scene.layout.HBox"
          stylesheets="@../css/search.css"
          xmlns="http://javafx.com/javafx"

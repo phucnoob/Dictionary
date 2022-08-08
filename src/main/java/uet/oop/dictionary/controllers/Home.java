@@ -4,11 +4,13 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import uet.oop.dictionary.data.Definition;
 import uet.oop.dictionary.data.Word;
@@ -17,15 +19,28 @@ import uet.oop.dictionary.ui.CustomPopup;
 import uet.oop.dictionary.ui.SearchBar;
 import uet.oop.dictionary.ui.WordView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Home implements Initializable {
+public class Home extends VBox implements Initializable {
     public SearchBar search;
     public Label label;
     public ScrollPane content;
     private DictionaryService dictionary;
+
+    public Home() {
+        System.out.println(getClass().getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
 
     public void autoComplete(String newValue) {
         if (newValue == null || newValue.isBlank()) return;

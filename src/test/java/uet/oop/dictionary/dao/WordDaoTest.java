@@ -22,7 +22,7 @@ class WordDaoTest {
 
     @BeforeEach
     void init() throws SQLException {
-        Path path = Path.of("src/test/resources").toAbsolutePath();
+        Path path = Path.of("src/original/resources").toAbsolutePath();
         URL = String.format("jdbc:sqlite:%s", path.resolve("testdata.db"));
 
         conn = DriverManager.getConnection(URL);
@@ -88,7 +88,7 @@ class WordDaoTest {
     }
 
     @Test
-    void get() {
+    void get() throws SQLException {
         var dao = new WordDao(conn);
         Word word = new Word("book", "/buk/", Collections.emptyList());
         dao.add(word);
@@ -120,7 +120,7 @@ class WordDaoTest {
     }
 
     @Test
-    void prefixSearch() {
+    void prefixSearch() throws SQLException {
         var dao = new WordDao(conn);
         Word word = new Word("book", "/buk/", Collections.emptyList());
         Word word1 = new Word("book1", "/buk/", Collections.emptyList());

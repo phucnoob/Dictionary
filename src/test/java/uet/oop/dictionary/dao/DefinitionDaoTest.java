@@ -24,7 +24,7 @@ class DefinitionDaoTest {
 
     @BeforeEach
     void init() throws SQLException {
-        Path path = Path.of("src/test/resources").toAbsolutePath();
+        Path path = Path.of("src/original/resources").toAbsolutePath();
         URL = String.format("jdbc:sqlite:%s", path.resolve("testdata.db"));
 
         conn = DriverManager.getConnection(URL);

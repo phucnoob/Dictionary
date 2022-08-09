@@ -1,0 +1,99 @@
+
+.text-box {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-background-color: transparent, #2d3436, transparent, #2d3436;
+    -fx-text-fill: #fff;
+    /*-fx-padding: 8;*/
+    -fx-font-size: 18;
+    -fx-display-caret: true;
+    -fx-wrap-text: true;
+    -fx-highlight-fill: #cccccc;
+    -fx-highlight-text-fill: #525252;
+}
+
+
+.text-area .content {
+    -fx-background-color: transparent, #2d3436, transparent, #2d3436;
+    -fx-text-fill: #000;
+}
+
+.text-area .content:selected {
+    -fx-background-color: transparent, #000, transparent, #2d3436;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent, #2d3436, transparent, #2d3436;
+}
+
+.google-translate {
+    -fx-padding: 8;
+}
+
+.text-box-container {
+    -fx-background-color: #2d3436;
+    -fx-padding: 12;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 2;
+    -fx-border-color: transparent;
+}
+
+.text-box-container-focused {
+    -fx-border-color: #3498db;
+}
+
+.google-translate .combo-box {
+    -fx-background-color: #2d3436;
+    -fx-pref-width: 180;
+    -fx-text-fill: #fff;
+    -fx-font-size: 18;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+}
+
+.google-translate .combo-box .cell:selected {
+    -fx-text-fill: #b2bec3;
+}
+
+.google-translate .combo-box .label {
+    -fx-background-color: #282620;
+}
+
+.google-translate .combo-box-popup .list-view .list-cell {
+    -fx-background-color: #2d3436;
+    -fx-text-fill: #fff;
+}
+
+.google-translate .combo-box-popup .list-view .list-cell:hover {
+    -fx-text-fill: #fff;
+    -fx-background-color: #636e72;
+}
+
+#stats {
+    -fx-text-fill: #b2bec3;
+    -fx-font-size: 15;
+    -fx-font-style: italic;
+    -fx-padding: 0 12 0 12;
+}
+
+#translateBtn {
+    -fx-text-fill: #fff;
+    -fx-background-radius: 4;
+    -fx-border-radius: 4;
+    -fx-background-color: #34495e;
+    -fx-font-size: 16;
+    -fx-font-weight: bold;
+    -fx-border-style: solid;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+}
+
+#translateBtn:hover {
+    -fx-background-color: rgba(60, 78, 100, 0.9);
+    -fx-border-color: rgba(255, 255, 255, 0.07);
+}

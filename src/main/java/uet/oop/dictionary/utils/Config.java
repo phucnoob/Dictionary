@@ -7,4 +7,7 @@ public final class Config {
     public static final String DATABASE_URL = "jdbc:sqlite:dictionaries.db";
 
     public static final Integer MAX_SUGGESTIONS = 10;
+
+    public static final double SIDEBAR_MAX = 200;
+    public static final double SIDEBAR_MIN = 68;
 }

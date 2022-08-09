@@ -73,7 +73,7 @@ public class DictionaryManagement {
 
     public boolean update(Word updated) {
         if (updated == null) {
-            System.err.println("Can't update null word to dictionary.");
+            System.err.println("Can't translate null word to dictionary.");
             return false;
         }
         return dictionary.update(updated.getTarget(), updated.getExplain());

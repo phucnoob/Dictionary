@@ -2,17 +2,11 @@ package uet.oop.dictionary.controllers;
 
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import uet.oop.dictionary.data.Definition;
 import uet.oop.dictionary.data.Word;
 import uet.oop.dictionary.services.DictionaryService;
 import uet.oop.dictionary.ui.CustomPopup;
@@ -24,19 +18,19 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Home extends VBox implements Initializable {
+public class WordSearchView extends VBox implements Initializable {
     public SearchBar search;
     public Label label;
     public ScrollPane content;
     private DictionaryService dictionary;
 
-    public Home() {
-        System.out.println(getClass().getResource("home-view.fxml"));
+    public WordSearchView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
+            this.applyCss();
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
@@ -61,9 +55,23 @@ public class Home extends VBox implements Initializable {
         content.setContent(wordView);
     }
 
-    public void handleAcceptSuggestion(ActionEvent event) {
+    private void handleAcceptSuggestion(ActionEvent event) {
         CustomPopup popup = (CustomPopup) event.getSource();
         Optional<Word> word = dictionary.lookup(popup.getLabelText());
+        search.clearSuggestions();
+        search.setText("");
+        search.hideSuggestions();
+        if (word.isPresent()) {
+            displayWord(word.get());
+        } else {
+            System.out.println("Word not found..");
+        }
+    }
+
+    private void handleEnterDirectly(ActionEvent event) {
+        TextField textField = (TextField) event.getSource();
+
+        Optional<Word> word = dictionary.lookup(textField.getText());
         search.clearSuggestions();
         search.setText("");
         search.hideSuggestions();
@@ -79,13 +87,14 @@ public class Home extends VBox implements Initializable {
 
         dictionary = DictionaryService.DEFAULT;
 
-        PauseTransition pause = new PauseTransition(Duration.millis(300));
+        PauseTransition pause = new PauseTransition(Duration.millis(100));
         search.textProperty()
                 .addListener((observable, oldValue, newValue) -> {
                     pause.setOnFinished(e -> autoComplete(newValue));
                     pause.playFromStart();
                 });
         search.setOnAcceptSuggestion(this::handleAcceptSuggestion);
+        search.textField.setOnAction(this::handleEnterDirectly);
     }
 
     private void deleteWord() {
@@ -106,6 +115,6 @@ public class Home extends VBox implements Initializable {
     }
 
     private void updateWord() {
-        System.out.println("update word");
+        System.out.println("translate word");
     }
 }

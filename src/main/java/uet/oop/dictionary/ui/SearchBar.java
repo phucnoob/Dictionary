@@ -13,11 +13,12 @@ import uet.oop.dictionary.utils.Config;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 
 public class SearchBar extends HBox {
 
     @FXML
-    private TextField textField;
+    public TextField textField;
     private EventHandler<ActionEvent> handler;
 
 
@@ -33,8 +34,7 @@ public class SearchBar extends HBox {
         }
 
         HBox.setHgrow(textField, Priority.ALWAYS);
-
-        textField.getContextMenu().getStyleClass().remove(".context-menu");
+        textField.applyCss();
         textField.getContextMenu()
                 .setOnShown(e ->
                         textField.getContextMenu()
@@ -60,6 +60,8 @@ public class SearchBar extends HBox {
 
     public void addContextMenu(String text) {
         CustomPopup popup = new CustomPopup(text);
+        double padding = textField.getPadding().getLeft() + textField.getPadding().getRight();
+        popup.setWidth(textField.getWidth() - padding);
         popup.setOnAction(handler);
         textField.getContextMenu()
                 .getItems()

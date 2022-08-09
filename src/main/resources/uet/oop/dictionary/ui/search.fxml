@@ -5,6 +5,10 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ComboBox?>
 <fx:root type="javafx.scene.layout.HBox"
          stylesheets="@../css/search.css"
          xmlns="http://javafx.com/javafx"
@@ -12,7 +16,7 @@
          xmlns:fx="http://javafx.com/fxml">
     <TextField fx:id="textField" styleClass="search">
         <contextMenu>
-            <ContextMenu styleClass="my-context-menu" width="${textField.width}" />
+            <ContextMenu />
         </contextMenu>
     </TextField>
 </fx:root>

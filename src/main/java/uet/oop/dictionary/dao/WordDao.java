@@ -60,7 +60,7 @@ public class WordDao extends BaseDao<Word> {
             Logger.getLogger(getClass().getName())
                     .log(Level.SEVERE, e.getMessage(), e);
 
-            throw new SQLException("word update failed.", e);
+            throw new SQLException("word translate failed.", e);
         }
     }
 

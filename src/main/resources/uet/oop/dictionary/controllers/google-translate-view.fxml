@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+<fx:root xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         stylesheets="@../css/google-translate.css"
+         styleClass="google-translate"
+         type="javafx.scene.layout.VBox">
+    <HBox alignment="CENTER">
+        <ComboBox fx:id="original">
+            <value>English</value>
+        </ComboBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <Button styleClass="icon-button" fx:id="swapBtn">
+            <graphic>
+                <FontIcon iconLiteral="bi-arrow-left-right" iconSize="20"/>
+            </graphic>
+        </Button>
+        <Region HBox.hgrow="ALWAYS" />
+        <ComboBox fx:id="translate">
+            <value>Vietnamese</value>
+        </ComboBox>
+
+        <padding>
+            <Insets bottom="12"/>
+        </padding>
+    </HBox>
+    <GridPane vgap="10" VBox.vgrow="ALWAYS">
+        <rowConstraints>
+            <RowConstraints percentHeight="50" />
+            <RowConstraints percentHeight="50" />
+        </rowConstraints>
+        <VBox GridPane.rowIndex="0"
+              GridPane.columnIndex="0"
+              styleClass="text-box-container"
+              fx:id="originalBox"
+              GridPane.hgrow="ALWAYS">
+            <TextArea styleClass="text-box"
+                      fx:id="originalText"
+                      VBox.vgrow="ALWAYS">
+            </TextArea>
+            <HBox alignment="CENTER_LEFT" >
+                <Button styleClass="icon-button" fx:id="clearTextBtn">
+                    <graphic>
+                        <FontIcon iconLiteral="bi-eraser" />
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Clear Text"/>
+                    </tooltip>
+                </Button>
+                <Button styleClass="icon-button" fx:id="copyTextBtn" >
+                    <graphic>
+                        <FontIcon iconLiteral="bi-clipboard" />
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Copy Text to Clipboard"/>
+                    </tooltip>
+                </Button>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label fx:id="stats" id="stats" text="0/3000"/>
+                <Button fx:id="translateBtn" id="translateBtn" text="Translate" />
+            </HBox>
+        </VBox>
+        <VBox  GridPane.rowIndex="1"
+               GridPane.columnIndex="0"
+               styleClass="text-box-container"
+               GridPane.hgrow="ALWAYS">
+            <TextArea VBox.vgrow="ALWAYS"
+                      fx:id="translateText"
+                      styleClass="text-box">
+            </TextArea>
+            <HBox alignment="CENTER_RIGHT">
+                <Region HBox.hgrow="ALWAYS" />
+                <Button styleClass="icon-button" fx:id="copyTranslatedBtn" >
+                    <graphic>
+                        <FontIcon iconLiteral="bi-files"/>
+                    </graphic>
+                    <tooltip>
+                        <Tooltip text="Copy Translation"/>
+                    </tooltip>
+                </Button>
+            </HBox>
+        </VBox>
+    </GridPane>
+</fx:root>

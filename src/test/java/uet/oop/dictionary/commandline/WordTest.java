@@ -44,7 +44,7 @@ class WordTest {
 
     @Test
     void setTargetShouldTrimTheString() {
-        Word word = Word.from("testing trim", "test");
+        Word word = Word.from("testing trim", "original");
         assert word != null;
         word.setTarget("     some target that not very clean        ");
 
@@ -53,7 +53,7 @@ class WordTest {
 
     @Test
     void setExplainShouldTrimTheString() {
-        Word word = Word.from("testing trim", "test");
+        Word word = Word.from("testing trim", "original");
         assert word != null;
         word.setExplain("     some explain that not very clean        ");
 

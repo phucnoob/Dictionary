@@ -7,21 +7,21 @@
 <fx:root xmlns="http://javafx.com/javafx"
          type="javafx.scene.layout.VBox"
          xmlns:fx="http://javafx.com/fxml"
+         alignment="CENTER"
          stylesheets="@../css/main.css">
-    <VBox
-          styleClass="container"
-        StackPane.alignment="CENTER">
+    <VBox VBox.vgrow="ALWAYS"
+          styleClass="container">
         <padding>
-            <Insets left="16" right="16" />
+            <Insets bottom="4" />
         </padding>
-        <SearchBar fx:id="search">
+        <SearchBar stylesheets="@../css/search.css" fx:id="search" >
             <VBox.margin>
-                <Insets left="12" right="12" top="8" />
+                <Insets left="8" right="8" top="8" />
             </VBox.margin>
         </SearchBar>
         <VBox VBox.vgrow="ALWAYS">
             <VBox.margin>
-                <Insets left="12" right="12" top="8" />
+                <Insets left="8" right="8" top="8" />
             </VBox.margin>
             <VBox VBox.vgrow="ALWAYS" styleClass="content">
                 <ScrollPane fx:id="content"

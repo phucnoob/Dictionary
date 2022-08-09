@@ -45,7 +45,7 @@ public class DictionaryCommandline {
             case "add":
                 commandlineAddView();
                 break;
-            case "update":
+            case "translate":
                 commandlineUpdateView();
                 break;
             case "delete":
@@ -86,7 +86,7 @@ public class DictionaryCommandline {
     public void printUsage() {
         String builder = "Usage: java -jar <jarfile> <command>\n" +
                 "add - Add a word.\n" +
-                "update - Update a word.\n" +
+                "translate - Update a word.\n" +
                 "delete - Delete a word by target.\n" +
                 "file-insert - Insert wordlist from file.\n" +
                 "command-insert - Insert word from commandline.\n" +

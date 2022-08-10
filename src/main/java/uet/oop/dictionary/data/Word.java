@@ -1,4 +1,4 @@
-package uet.oop.dictionary.commandline;
+package uet.oop.dictionary.data;
 
 public class Word {
     private String target;

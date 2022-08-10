@@ -1,5 +1,10 @@
-package uet.oop.dictionary.commandline;
+package uet.oop.dictionary.manage;
 
+
+import uet.oop.dictionary.utils.InputHelper;
+import uet.oop.dictionary.data.Dictionary;
+import uet.oop.dictionary.data.FileDictionary;
+import uet.oop.dictionary.data.Word;
 
 import java.io.BufferedReader;
 import java.io.IOException;

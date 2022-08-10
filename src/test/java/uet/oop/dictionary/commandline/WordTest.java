@@ -2,6 +2,7 @@ package uet.oop.dictionary.commandline;
 
 
 import org.junit.jupiter.api.Test;
+import uet.oop.dictionary.data.Word;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;

@@ -1,4 +1,4 @@
-package uet.oop.dictionary.commandline;
+package uet.oop.dictionary.data;
 
 
 import java.util.ArrayList;

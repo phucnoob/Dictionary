@@ -1,5 +1,7 @@
-package uet.oop.dictionary.commandline;
+package uet.oop.dictionary.data;
 
+
+import uet.oop.dictionary.data.Word;
 
 import java.util.List;
 import java.util.Optional;

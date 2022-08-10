@@ -92,10 +92,13 @@ public class HamburgerMenu implements Initializable {
         allView = new HashMap<>();
         allView.put(search, new WordSearchView());
         allView.put(translate, new GoogleTranslate());
+        allView.put(add, new AddWordView());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initViewPane();
         initButtonsOnAction();
+
+        root.setCenter(allView.get(add));
     }
 }

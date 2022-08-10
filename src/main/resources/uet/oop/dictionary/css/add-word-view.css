@@ -1,0 +1,110 @@
+.add-word-view {
+    -fx-padding: 0 12 0 12;
+}
+
+.add-word-view * {
+    -fx-focus-traversable: false;
+}
+
+.add-word-view .text-field {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-border-width: 1;
+    -fx-background-insets: 0;
+    -fx-border-insets: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent, #2d3436, transparent, #2d3436;
+    -fx-border-style: solid;
+    -fx-text-fill: #fff;
+    /*-fx-padding: 8;*/
+    -fx-font-size: 18;
+    -fx-display-caret: true;
+    -fx-wrap-text: true;
+    -fx-highlight-fill: #cccccc;
+    -fx-highlight-text-fill: #525252;
+    -fx-focus-traversable: true;
+}
+
+.add-word-view .text-field:focused {
+    -fx-border-color: #3498db;
+}
+
+.add-word-view .title {
+    -fx-font-size: 40;
+    -fx-padding: 40;
+}
+
+.target-form-group .label {
+    -fx-font-size: 18;
+    -fx-text-alignment: CENTER;
+    -fx-min-width: 120;
+}
+
+.explain-form-group {
+    -fx-spacing: 4;
+}
+
+
+.explain-form-group .label {
+    -fx-padding: 0 12 0 20;
+    -fx-font-size: 14;
+    -fx-font-style: italic;
+}
+
+.explain-form-group .combo-box {
+    -fx-background-color: #2d3436;
+    -fx-pref-width: 140;
+    -fx-text-fill: #fff;
+    -fx-font-size: 18;
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-background-insets: 0;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.explain-form-group .combo-box .cell:selected {
+    -fx-text-fill: #b2bec3;
+}
+
+.explain-form-group .combo-box .label {
+    -fx-background-color: #282620;
+}
+
+.explain-form-group .combo-box-popup .list-view .list-cell {
+    -fx-background-color: #2d3436;
+    -fx-text-fill: #fff;
+}
+
+#add-definition .ikonli-font-icon {
+    -fx-icon-color: #2d3436;
+}
+
+#clear, #save {
+    -fx-font-size: 20;
+    -fx-padding: 8 20;
+    -fx-border-radius: 10;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10;
+    -fx-background-color: transparent;
+    -fx-text-fill: #fff;
+    /*-fx-focus-traversable: true;*/
+}
+
+#save {
+    -fx-background-color: #34495e;
+}
+
+#clear {
+    -fx-border-color: #a9b5ba;
+}
+
+#clear:hover {
+    -fx-border-color: #a9b5ba;
+    -fx-background-color: #a9b5ba;
+    -fx-text-fill: #1f1f1f;
+}
+
+#save:hover {
+    -fx-background-color: #2d3436;
+}

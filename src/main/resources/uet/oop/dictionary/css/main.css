@@ -170,6 +170,7 @@
     -fx-border-radius: 10;
     -fx-border-color: transparent;
     -fx-background-radius: 10;
+    -fx-focus-traversable: false;
 }
 
 .icon-button:hover {

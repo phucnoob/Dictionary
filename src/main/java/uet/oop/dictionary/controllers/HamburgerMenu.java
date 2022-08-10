@@ -9,8 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
-import uet.oop.dictionary.ui.Toast;
-import uet.oop.dictionary.ui.ToastUI;
 import uet.oop.dictionary.utils.Config;
 
 import java.net.URL;
@@ -94,8 +92,8 @@ public class HamburgerMenu implements Initializable {
 
     public void initViewPane() {
         allView = new HashMap<>();
-        allView.put(search, new WordSearchView());
-        allView.put(translate, new GoogleTranslate());
+        allView.put(search, new SearchWordView());
+        allView.put(translate, new GoogleTranslateView());
         allView.put(add, new AddWordView());
         allView.put(update, new UpdateWordView());
     }

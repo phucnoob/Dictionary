@@ -10,13 +10,13 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class WordDao extends BaseDao<Word> {
+public class WordDAO extends BaseDAO<Word> {
 
-    public WordDao(String database) throws SQLException {
+    public WordDAO(String database) throws SQLException {
         super(database);
     }
 
-    public WordDao(Connection conn) {
+    public WordDAO(Connection conn) {
         super(conn);
     }
 

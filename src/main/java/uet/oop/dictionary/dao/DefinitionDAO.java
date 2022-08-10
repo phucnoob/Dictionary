@@ -10,13 +10,13 @@ import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DefinitionDao extends BaseDao<Definition> {
+public class DefinitionDAO extends BaseDAO<Definition> {
 
-    public DefinitionDao(String database) throws SQLException {
+    public DefinitionDAO(String database) throws SQLException {
         super(database);
     }
 
-    public DefinitionDao(Connection conn) {
+    public DefinitionDAO(Connection conn) {
         super(conn);
     }
 

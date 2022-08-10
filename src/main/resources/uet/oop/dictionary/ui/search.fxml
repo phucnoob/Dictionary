@@ -16,7 +16,7 @@
          xmlns:fx="http://javafx.com/fxml">
     <TextField fx:id="textField" styleClass="search">
         <contextMenu>
-            <ContextMenu />
+            <ContextMenu styleClass="context-menu" />
         </contextMenu>
     </TextField>
 </fx:root>

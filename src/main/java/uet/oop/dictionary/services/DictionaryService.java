@@ -1,7 +1,7 @@
 package uet.oop.dictionary.services;
 
-import uet.oop.dictionary.dao.DefinitionDao;
-import uet.oop.dictionary.dao.WordDao;
+import uet.oop.dictionary.dao.DefinitionDAO;
+import uet.oop.dictionary.dao.WordDAO;
 import uet.oop.dictionary.data.Definition;
 import uet.oop.dictionary.data.Word;
 import uet.oop.dictionary.utils.Config;
@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 
 public class DictionaryService implements Dictionary {
 
-    private final WordDao wordDao;
-    private final DefinitionDao definitionDao;
+    private final WordDAO wordDao;
+    private final DefinitionDAO definitionDao;
 
     private final Connection conn;
 
@@ -29,8 +29,8 @@ public class DictionaryService implements Dictionary {
         try {
             conn = DriverManager.getConnection(Config.DATABASE_URL);
             setDataBase(conn);
-            wordDao = new WordDao(conn);
-            definitionDao = new DefinitionDao(conn);
+            wordDao = new WordDAO(conn);
+            definitionDao = new DefinitionDAO(conn);
         } catch (SQLException e) {
             throw new RuntimeException("Application can not start." ,e);
         }

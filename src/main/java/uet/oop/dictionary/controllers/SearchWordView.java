@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import uet.oop.dictionary.data.Word;
@@ -20,14 +19,14 @@ import java.net.URL;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class WordSearchView extends VBox implements Initializable {
+public class SearchWordView extends VBox implements Initializable {
     public SearchBar search;
     public Label label;
     public ScrollPane content;
     private DictionaryService dictionary;
 
-    public WordSearchView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("word-search-view.fxml"));
+    public SearchWordView() {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("search-word-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {

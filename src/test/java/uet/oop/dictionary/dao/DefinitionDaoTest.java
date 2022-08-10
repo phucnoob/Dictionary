@@ -31,7 +31,7 @@ class DefinitionDaoTest {
 
     @Test
     void add() throws SQLException {
-        DefinitionDao dao = new DefinitionDao(conn);
+        DefinitionDAO dao = new DefinitionDAO(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
@@ -44,7 +44,7 @@ class DefinitionDaoTest {
 
     @Test
     void update() throws SQLException {
-        DefinitionDao dao = new DefinitionDao(conn);
+        DefinitionDAO dao = new DefinitionDAO(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
@@ -60,7 +60,7 @@ class DefinitionDaoTest {
 
     @Test
     void delete() throws SQLException {
-        DefinitionDao dao = new DefinitionDao(conn);
+        DefinitionDAO dao = new DefinitionDAO(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
@@ -75,7 +75,7 @@ class DefinitionDaoTest {
 
     @Test
     void get() throws SQLException {
-        DefinitionDao dao = new DefinitionDao(conn);
+        DefinitionDAO dao = new DefinitionDAO(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
@@ -88,8 +88,8 @@ class DefinitionDaoTest {
 
     @Test
     void getWordDefs() throws SQLException {
-        DefinitionDao definitionDao = new DefinitionDao(conn);
-        WordDao wordDao = new WordDao(conn);
+        DefinitionDAO definitionDao = new DefinitionDAO(conn);
+        WordDAO wordDao = new WordDAO(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
@@ -112,7 +112,7 @@ class DefinitionDaoTest {
 
     @Test
     void getAll() throws SQLException {
-        DefinitionDao dao = new DefinitionDao(conn);
+        DefinitionDAO dao = new DefinitionDAO(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);

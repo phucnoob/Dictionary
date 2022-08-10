@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Side;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -12,10 +13,12 @@ import javafx.scene.layout.Priority;
 import uet.oop.dictionary.utils.Config;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class SearchBar extends HBox {
+public class SearchBar extends HBox implements Initializable {
 
     @FXML
     public TextField textField;
@@ -34,7 +37,6 @@ public class SearchBar extends HBox {
         }
 
         HBox.setHgrow(textField, Priority.ALWAYS);
-        textField.applyCss();
         textField.getContextMenu()
                 .setOnShown(e ->
                         textField.getContextMenu()
@@ -60,7 +62,9 @@ public class SearchBar extends HBox {
 
     public void addContextMenu(String text) {
         CustomPopup popup = new CustomPopup(text);
-        double padding = textField.getPadding().getLeft() + textField.getPadding().getRight();
+        double padding = textField.getPadding().getLeft()
+                + textField.getPadding().getRight()
+                + 12;
         popup.setWidth(textField.getWidth() - padding);
         popup.setOnAction(handler);
         textField.getContextMenu()
@@ -81,5 +85,11 @@ public class SearchBar extends HBox {
 
     public StringProperty textProperty() {
         return textField.textProperty();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println(textField.getContextMenu().getStyleClass());
+        System.out.println(getStylesheets());
     }
 }

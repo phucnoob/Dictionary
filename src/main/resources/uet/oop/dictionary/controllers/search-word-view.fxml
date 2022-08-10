@@ -8,7 +8,7 @@
          type="javafx.scene.layout.VBox"
          xmlns:fx="http://javafx.com/fxml"
          alignment="CENTER"
-         stylesheets="@../css/main.css">
+         stylesheets="@../css/search-word-view.css">
     <VBox VBox.vgrow="ALWAYS"
           styleClass="container">
         <padding>

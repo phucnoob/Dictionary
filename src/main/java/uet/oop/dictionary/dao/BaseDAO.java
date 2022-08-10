@@ -7,18 +7,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class BaseDao<T> implements Closeable {
+public abstract class BaseDAO<T> implements Closeable {
     protected Connection conn;
 
     public Connection getConn() {
         return conn;
     }
 
-    protected BaseDao(String database) throws SQLException {
+    protected BaseDAO(String database) throws SQLException {
         conn = DriverManager.getConnection(database);
     }
 
-    protected BaseDao(Connection conn) {
+    protected BaseDAO(Connection conn) {
         this.conn = conn;
     }
 

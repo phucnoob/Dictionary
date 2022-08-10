@@ -1,11 +1,9 @@
 package uet.oop.dictionary.controllers;
 
-import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -16,12 +14,11 @@ import uet.oop.dictionary.api.Translator;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class GoogleTranslate extends VBox implements Initializable {
+public class GoogleTranslateView extends VBox implements Initializable {
 
 
     @FXML
@@ -64,7 +61,7 @@ public class GoogleTranslate extends VBox implements Initializable {
 
     private Translator translator;
 
-    public GoogleTranslate() {
+    public GoogleTranslateView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("google-translate-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);

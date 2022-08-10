@@ -11,6 +11,7 @@ public class CustomPopup extends MenuItem {
     public CustomPopup(String text) {
         super();
         innerLabel = new Label(text);
+        innerLabel.setId("my-menu");
         innerLabel.setStyle("-fx-font-size: 18px;");
         setCss();
         setGraphic(innerLabel);

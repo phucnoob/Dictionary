@@ -32,7 +32,7 @@ class WordDaoTest {
     @Test
     void add() {
         try {
-            var dao = new WordDao(conn);
+            var dao = new WordDAO(conn);
             Word word = new Word("book", "/buk/", Collections.emptyList());
             dao.add(word);
             List<Word> words = dao.getAll(1);
@@ -48,7 +48,7 @@ class WordDaoTest {
     @Test
     void update() {
         try {
-            var dao = new WordDao(conn);
+            var dao = new WordDAO(conn);
             Word word = new Word("book", "/buk/", Collections.emptyList());
             dao.add(word);
             List<Word> words = dao.getAll(1);
@@ -72,7 +72,7 @@ class WordDaoTest {
     @Test
     void delete() {
         try {
-            var dao = new WordDao(conn);
+            var dao = new WordDAO(conn);
             Word word = new Word("book", "/buk/", Collections.emptyList());
             dao.add(word);
             List<Word> words = dao.getAll(1);
@@ -87,7 +87,7 @@ class WordDaoTest {
 
     @Test
     void get() throws SQLException {
-        var dao = new WordDao(conn);
+        var dao = new WordDAO(conn);
         Word word = new Word("book", "/buk/", Collections.emptyList());
         dao.add(word);
 
@@ -98,7 +98,7 @@ class WordDaoTest {
 
     @Test
     void getAll() throws SQLException {
-        var dao = new WordDao(conn);
+        var dao = new WordDAO(conn);
         Word word = new Word("book", "/buk/", Collections.emptyList());
         Word word1 = new Word("book1", "/buk/", Collections.emptyList());
         Word word2 = new Word("book2", "/buk/", Collections.emptyList());
@@ -119,7 +119,7 @@ class WordDaoTest {
 
     @Test
     void prefixSearch() throws SQLException {
-        var dao = new WordDao(conn);
+        var dao = new WordDAO(conn);
         Word word = new Word("book", "/buk/", Collections.emptyList());
         Word word1 = new Word("book1", "/buk/", Collections.emptyList());
         Word word2 = new Word("book2", "/buk/", Collections.emptyList());

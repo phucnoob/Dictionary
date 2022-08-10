@@ -47,7 +47,6 @@ public class DictionaryService implements Dictionary {
             for (var def: word.getDefinitions()) {
                 def.setWordId(id);
                 definitionDao.add(def);
-                System.out.println(def);
             }
 
             conn.commit();
@@ -64,8 +63,11 @@ public class DictionaryService implements Dictionary {
                 Logger.getLogger(getClass().getName())
                         .log(Level.FINE, "Can't rollback, critical error!", e);
             }
-            return false;
+        } catch (Exception ex) {
+            Logger.getLogger(getClass().getName())
+                    .log(Level.WARNING, ex.getMessage(), ex);
         }
+        return false;
     }
 
     @Override
@@ -97,12 +99,10 @@ public class DictionaryService implements Dictionary {
         try {
             getConn().setAutoCommit(false);
             wordDao.update(id, word);
+            definitionDao.deleteAllWordDefs(id);
             for (var definition: word.getDefinitions()) {
-                if (definition.getWordId() == Definition.ID_UNSET) {
-                    definitionDao.add(definition);
-                } else {
-                    definitionDao.update(definition.getId(), definition);
-                }
+                definition.setId(id);
+                definitionDao.add(definition);
             }
             getConn().commit();
             getConn().setAutoCommit(true);

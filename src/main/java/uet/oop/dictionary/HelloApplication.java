@@ -18,6 +18,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(view);
 
         Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+        scene.setUserData(fxmlLoader.getController());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.setWidth(600);

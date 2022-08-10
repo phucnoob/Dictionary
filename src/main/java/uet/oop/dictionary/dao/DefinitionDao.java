@@ -88,6 +88,21 @@ public class DefinitionDao extends BaseDao<Definition> {
         }
     }
 
+    public void deleteAllWordDefs(int wordID) throws SQLException {
+        String deleteDefinition = "DELETE FROM main.definitions WHERE main.definitions.word_id = ?;";
+        try (var st = getConn().prepareStatement(deleteDefinition)) {
+            st.setInt(1, wordID);
+            int rowAffect = st.executeUpdate();
+
+            if (rowAffect < 0) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Delete definition operation failed. But no errors was found");
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Delete definition failed.", e);
+        }
+    }
+
     @Override
     public Optional<Definition> get(int id) {
         String getDefSQL = "SELECT * FROM definitions WHERE definition_id = ?;";

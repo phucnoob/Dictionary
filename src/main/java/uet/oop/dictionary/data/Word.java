@@ -8,6 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Word {
+
+    public static final int ID_UNSET = -1;
     private int word_id;
 
     public void setID(int word_id) {

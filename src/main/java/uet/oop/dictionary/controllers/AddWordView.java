@@ -10,6 +10,7 @@ import uet.oop.dictionary.services.DictionaryService;
 import uet.oop.dictionary.ui.Toast;
 import uet.oop.dictionary.ui.ToastUI;
 import uet.oop.dictionary.ui.WordForm;
+import uet.oop.dictionary.utils.QuickToast;
 
 import java.io.IOException;
 import java.net.URL;
@@ -53,19 +54,10 @@ public class AddWordView extends VBox implements Initializable {
     public void addWordHandler() {
         Word word = wordForm.getData();
         boolean added = dictionary.add(word);
-
-        Toast.ToastBuilder builder = new Toast.ToastBuilder(this.getScene().getWindow());
-        builder.withContent(new ToastUI())
-                .withPos(root.getLayoutX() + 4, root.getLayoutY()
-                        + root.getHeight() - 40);
-
         if (added) {
-            builder.withMessage("Add word successfully.");
+            QuickToast.makeText(root, String.format("Add %s successfully.", word.getTarget()));
         } else {
-            builder.withMessage("Add word failed.\nSee the log for detail.");
+            QuickToast.makeText(root, "Add word failed.\nSee the log for details.");
         }
-
-        Toast toast = builder.build();
-        toast.show();
     }
 }

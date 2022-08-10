@@ -127,7 +127,7 @@ public final class Toast {
             this.message = "";
             fadeInDelay = 0.2;
             fadeOutDelay = 0.5;
-            delay = 1.5;
+            delay = 2.5;
             content = new ToastUI();
         }
 

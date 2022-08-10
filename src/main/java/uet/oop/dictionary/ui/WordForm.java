@@ -33,6 +33,8 @@ public class WordForm extends VBox implements Initializable {
     @FXML
     public VBox explainForm;
 
+    private int wordID = Word.ID_UNSET;
+
     public WordForm() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("word-form.fxml"));
         fxmlLoader.setRoot(this);
@@ -47,28 +49,38 @@ public class WordForm extends VBox implements Initializable {
 
     public void clear() {
         targetInput.clear();
-
+        phoneticsInput.clear();
         explainForm.getChildren().clear();
         explainInputs.clear();
         explainForm.getChildren().add(createExplainFormGroup());
     }
 
     private HBox createExplainFormGroup() {
+        return createExplainFormGroup(null);
+    }
+
+    private HBox createExplainFormGroup(Definition definition) {
         Label label = new Label("Explain");
         ComboBox<String> wordTypes = new ComboBox<>();
         wordTypes.getItems().addAll("Danh từ", "Động từ", "Tính từ");
         wordTypes.setValue("");
-        TextField textInput = new TextField();
-        textInput.setOnAction(e -> onActionHandler());
-        HBox.setHgrow(textInput, Priority.ALWAYS);
+        TextField explainInput = new TextField();
+        explainInput.setOnAction(e -> onActionHandler());
+        HBox.setHgrow(explainInput, Priority.ALWAYS);
 
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER_LEFT);
-        hBox.getChildren().addAll(label, wordTypes, textInput);
+        hBox.getChildren().addAll(label, wordTypes, explainInput);
         hBox.getStyleClass().add("explain-form-group");
         hBox.setId("explain-group");
 
-        explainInputs.add(new Pair<>(wordTypes, textInput));
+        explainInputs.add(new Pair<>(wordTypes, explainInput));
+
+        // load data if definition not null
+        if (definition != null) {
+            wordTypes.setValue(definition.getWordType());
+            explainInput.setText(definition.getExplain());
+        }
 
         return hBox;
     }
@@ -85,6 +97,8 @@ public class WordForm extends VBox implements Initializable {
 
     public Word getData() {
         Word wordData = new Word();
+
+        wordData.setID(wordID);
         wordData.setTarget(targetInput.getText());
         wordData.setPhonetics(phoneticsInput.getText());
 
@@ -97,6 +111,7 @@ public class WordForm extends VBox implements Initializable {
             var definition = new Definition();
             definition.setWordType(wordType);
             definition.setExplain(wordExplain);
+            definition.setWordId(wordID);
 
             definitions.add(definition);
         }
@@ -106,4 +121,16 @@ public class WordForm extends VBox implements Initializable {
         return wordData;
     }
 
+    public void setData(Word word) {
+        explainForm.getChildren().clear();
+        explainInputs.clear();
+
+        targetInput.setText(word.getTarget());
+        phoneticsInput.setText(word.getPhonetics());
+        wordID = word.getID();
+
+        for (var definition: word.getDefinitions()) {
+            explainForm.getChildren().add(createExplainFormGroup(definition));
+        }
+    }
 }

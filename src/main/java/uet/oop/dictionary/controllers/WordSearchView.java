@@ -4,7 +4,9 @@ import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import uet.oop.dictionary.data.Word;
@@ -25,7 +27,7 @@ public class WordSearchView extends VBox implements Initializable {
     private DictionaryService dictionary;
 
     public WordSearchView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("word-search-view.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -50,6 +52,7 @@ public class WordSearchView extends VBox implements Initializable {
     public void displayWord(Word word) {
         WordView wordView = new WordView();
         wordView.deleteBtn.setOnAction(e -> deleteWord());
+        wordView.updateBtn.setOnAction(e -> updateWord(word));
         wordView.setWord(word);
 
         content.setContent(wordView);
@@ -121,7 +124,11 @@ public class WordSearchView extends VBox implements Initializable {
         }
     }
 
-    private void updateWord() {
-        System.out.println("translate word");
+    private void updateWord(Word word) {
+        Scene scene = getScene();
+        HamburgerMenu menu = (HamburgerMenu) scene.getUserData();
+        UpdateWordView updateView = (UpdateWordView) menu.allView.get(menu.update);
+        updateView.setWord(word);
+        menu.update.fire();
     }
 }

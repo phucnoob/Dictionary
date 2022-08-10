@@ -20,6 +20,7 @@ public class HamburgerMenu implements Initializable {
     public VBox box;
     public Button toggle;
     public Button add;
+    public Button update;
     public Button search;
     public Button translate;
     public BorderPane root;
@@ -88,6 +89,7 @@ public class HamburgerMenu implements Initializable {
         translate.setOnAction(this::changeView);
         search.setOnAction(this::changeView);
         toggle.setOnAction(this::onToggleSideBar);
+        update.setOnAction(this::changeView);
     }
 
     public void initViewPane() {
@@ -95,12 +97,15 @@ public class HamburgerMenu implements Initializable {
         allView.put(search, new WordSearchView());
         allView.put(translate, new GoogleTranslate());
         allView.put(add, new AddWordView());
+        allView.put(update, new UpdateWordView());
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        update = new Button();
         initViewPane();
         initButtonsOnAction();
 
-        root.setCenter(allView.get(add));
+        root.setCenter(allView.get(update));
     }
 }

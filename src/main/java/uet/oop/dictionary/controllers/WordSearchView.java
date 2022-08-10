@@ -93,6 +93,13 @@ public class WordSearchView extends VBox implements Initializable {
                     pause.setOnFinished(e -> autoComplete(newValue));
                     pause.playFromStart();
                 });
+
+        this.focusedProperty().addListener((observable, oldVal, newVal) -> {
+            if (newVal) {
+                search.textField.requestFocus();
+            }
+        });
+
         search.setOnAcceptSuggestion(this::handleAcceptSuggestion);
         search.textField.setOnAction(this::handleEnterDirectly);
     }

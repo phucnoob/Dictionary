@@ -1,0 +1,39 @@
+#toast-ui {
+    -fx-background-color: #2d3436;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+#toast-ui .label {
+    -fx-text-fill: #b2bec3;
+    -fx-font-size: 16;
+    -fx-padding: 8 8 8 20;
+    -fx-text-alignment: LEFT;
+}
+
+#toast-ui .icon-button {
+    -fx-min-width: 0;
+    -fx-max-width: Infinity;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-color: transparent;
+    -fx-font-size: 16;
+    -fx-text-fill: #b2bec3;
+    -fx-graphic-text-gap: 12;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    -fx-border-insets: 0;
+    -fx-border-radius: 10;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10;
+    -fx-focus-traversable: false;
+}
+
+#toast-ui .icon-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.05);
+    -fx-border-color: rgba(255, 255, 255, 0.07);
+}
+
+#toast-ui .icon-button .ikonli-font-icon {
+    -fx-icon-size: 20;
+    -fx-icon-color: #b2bec3;
+}

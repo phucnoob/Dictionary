@@ -9,6 +9,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import uet.oop.dictionary.ui.Toast;
+import uet.oop.dictionary.ui.ToastUI;
 import uet.oop.dictionary.utils.Config;
 
 import java.net.URL;

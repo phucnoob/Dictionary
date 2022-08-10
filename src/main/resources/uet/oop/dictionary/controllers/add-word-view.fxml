@@ -8,37 +8,22 @@
 
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import javafx.geometry.Insets?>
+<?import uet.oop.dictionary.ui.WordForm?>
 <fx:root xmlns="http://javafx.com/javafx"
          xmlns:fx="http://javafx.com/fxml"
          spacing="10"
+         fx:id="root"
          stylesheets="@../css/add-word-view.css"
          styleClass="add-word-view"
          type="javafx.scene.layout.VBox">
     <Label styleClass="title" textAlignment="CENTER" text="Add word"/>
-    <VBox spacing="4">
-        <HBox alignment="CENTER_LEFT" styleClass="target-form-group">
-            <Label text="Word Target" />
-            <TextField HBox.hgrow="ALWAYS" />
-            <Button id="add-definition" styleClass="icon-button">
-                <graphic>
-                    <FontIcon iconLiteral="bi-plus" iconSize="32"/>
-                </graphic>
-            </Button>
-        </HBox>
-        <HBox styleClass="explain-form-group" alignment="CENTER_LEFT">
-            <Label text="Explain"/>
-            <ComboBox focusTraversable="false">
-                <value>Danh từ</value>
-            </ComboBox>
-            <TextField HBox.hgrow="ALWAYS" />
-        </HBox>
-    </VBox>
+    <WordForm fx:id="wordForm" spacing="6" />
     <Region VBox.vgrow="ALWAYS"/>
     <HBox alignment="CENTER_RIGHT" spacing="6">
         <padding>
             <Insets bottom="12" />
         </padding>
-        <Button id="clear" text="Clear"/>
-        <Button id="save" text="Save" />
+        <Button fx:id="clearBtn" id="clearBtn" text="Clear"/>
+        <Button fx:id="addBtn" id="addBtn" text="Add" />
     </HBox>
 </fx:root>

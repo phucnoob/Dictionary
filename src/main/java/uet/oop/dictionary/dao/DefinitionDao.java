@@ -2,10 +2,7 @@ package uet.oop.dictionary.dao;
 
 import uet.oop.dictionary.data.Definition;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,14 +27,19 @@ public class DefinitionDao extends BaseDao<Definition> {
         }
 
         String addDefinition = "INSERT INTO definitions(explain, type, word_id) VALUES (?, ?, ?);";
-        try (var statement = getConn().prepareStatement(addDefinition)) {
+        try (var statement = getConn()
+                .prepareStatement(addDefinition, Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, definition.getExplain());
             statement.setString(2, definition.getWordType());
-            statement.setInt(3, definition.getId());
+            statement.setInt(3, definition.getWordId());
 
             int rowAffect = statement.executeUpdate();
 
-            if (rowAffect <= 0) {
+            if (rowAffect > 0) {
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+                definition.setId(resultSet.getInt(1));
+            } else {
                 Logger.getLogger(getClass().getName())
                         .log(Level.WARNING, "Add definition operation failed. But no errors was found");
             }

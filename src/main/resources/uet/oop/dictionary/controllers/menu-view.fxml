@@ -9,6 +9,8 @@
 <BorderPane fx:id="root"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../css/main.css"
+            prefHeight="600"
+            prefWidth="600"
             fx:controller="uet.oop.dictionary.controllers.HamburgerMenu">
     <left>
         <VBox styleClass="menu-box" maxWidth="68" id="menu-box" fx:id="box" spacing="10">

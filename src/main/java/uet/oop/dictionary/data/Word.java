@@ -1,7 +1,11 @@
 package uet.oop.dictionary.data;
 
+import javafx.css.Match;
+
 import java.util.Collections;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Word {
     private int word_id;
@@ -23,9 +27,16 @@ public class Word {
     }
 
     public static boolean isInValidWord(Word word) {
-        if (word == null) return true;
-        if (word.target == null) return true;
-        return word.phonetics == null;
+        try {
+            // Neglect pattern.
+            Pattern validWord = Pattern.compile("[^-_$a-zA-Z0-9]*");
+            Matcher targetMatch = validWord.matcher(word.getTarget());
+            Matcher phoneticsMatch = validWord.matcher(word.getPhonetics());
+
+            return targetMatch.matches() || phoneticsMatch.matches();
+        } catch (NullPointerException ex) {
+            return false;
+        }
     }
 
     public Word(String target, String phonetics, List<Definition> definitions) {

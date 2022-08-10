@@ -6,9 +6,7 @@ import uet.oop.dictionary.data.Definition;
 import uet.oop.dictionary.data.Word;
 import uet.oop.dictionary.utils.Config;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +28,7 @@ public class DictionaryService implements Dictionary {
     public DictionaryService() {
         try {
             conn = DriverManager.getConnection(Config.DATABASE_URL);
+            setDataBase(conn);
             wordDao = new WordDao(conn);
             definitionDao = new DefinitionDao(conn);
         } catch (SQLException e) {
@@ -48,6 +47,7 @@ public class DictionaryService implements Dictionary {
             for (var def: word.getDefinitions()) {
                 def.setWordId(id);
                 definitionDao.add(def);
+                System.out.println(def);
             }
 
             conn.commit();
@@ -178,5 +178,14 @@ public class DictionaryService implements Dictionary {
 
     public Connection getConn() {
         return conn;
+    }
+
+    private void setDataBase(Connection connection) {
+        try (PreparedStatement st = connection.prepareStatement("PRAGMA foreign_keys=ON;")) {
+            st.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(getClass().getName())
+                    .log(Level.SEVERE, "Failed to setup the database.", ex);
+        }
     }
 }

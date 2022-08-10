@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<fx:root xmlns="http://javafx.com/javafx"
+         xmlns:fx="http://javafx.com/fxml"
+         stylesheets="@../css/toast-ui.css"
+         id="toast-ui"
+         type="javafx.scene.layout.VBox">
+    <HBox alignment="CENTER_RIGHT">
+        <Label VBox.vgrow="ALWAYS"
+               fx:id="message"
+               maxWidth="300"
+               prefHeight="64"
+               wrapText="true"
+               text="Default Message" />
+        <Button styleClass="icon-button">
+            <graphic>
+                <FontIcon iconLiteral="bi-x"/>
+            </graphic>
+        </Button>
+    </HBox>
+</fx:root>

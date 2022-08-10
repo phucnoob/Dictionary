@@ -34,53 +34,11 @@
     -fx-padding: 40;
 }
 
-.target-form-group .label {
-    -fx-font-size: 18;
-    -fx-text-alignment: CENTER;
-    -fx-min-width: 120;
-}
-
-.explain-form-group {
-    -fx-spacing: 4;
-}
-
-
-.explain-form-group .label {
-    -fx-padding: 0 12 0 20;
-    -fx-font-size: 14;
-    -fx-font-style: italic;
-}
-
-.explain-form-group .combo-box {
-    -fx-background-color: #2d3436;
-    -fx-pref-width: 140;
-    -fx-text-fill: #fff;
-    -fx-font-size: 18;
-    -fx-border-width: 0;
-    -fx-border-insets: 0;
-    -fx-background-insets: 0;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-}
-
-.explain-form-group .combo-box .cell:selected {
-    -fx-text-fill: #b2bec3;
-}
-
-.explain-form-group .combo-box .label {
-    -fx-background-color: #282620;
-}
-
-.explain-form-group .combo-box-popup .list-view .list-cell {
-    -fx-background-color: #2d3436;
-    -fx-text-fill: #fff;
-}
-
 #add-definition .ikonli-font-icon {
     -fx-icon-color: #2d3436;
 }
 
-#clear, #save {
+#clearBtn, #addBtn {
     -fx-font-size: 20;
     -fx-padding: 8 20;
     -fx-border-radius: 10;
@@ -91,20 +49,20 @@
     /*-fx-focus-traversable: true;*/
 }
 
-#save {
+#addBtn {
     -fx-background-color: #34495e;
 }
 
-#clear {
+#clearBtn {
     -fx-border-color: #a9b5ba;
 }
 
-#clear:hover {
+#clearBtn:hover {
     -fx-border-color: #a9b5ba;
     -fx-background-color: #a9b5ba;
     -fx-text-fill: #1f1f1f;
 }
 
-#save:hover {
+#addBtn:hover {
     -fx-background-color: #2d3436;
 }

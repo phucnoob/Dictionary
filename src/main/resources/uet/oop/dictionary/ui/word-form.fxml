@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root xmlns="http://javafx.com/javafx"
+         type="javafx.scene.layout.VBox"
+         stylesheets="@../css/word-form.css"
+            xmlns:fx="http://javafx.com/fxml">
+    <HBox alignment="CENTER_LEFT" styleClass="target-form-group">
+        <Label text="Target" />
+        <TextField HBox.hgrow="ALWAYS" fx:id="targetInput" />
+    </HBox>
+    <HBox alignment="CENTER_LEFT" styleClass="target-form-group">
+        <Label text="Phonetics" />
+        <TextField HBox.hgrow="ALWAYS" fx:id="phoneticsInput" />
+    </HBox>
+    <Region prefHeight="12" />
+    <VBox fx:id="explainForm" spacing="8">
+    </VBox>
+</fx:root>

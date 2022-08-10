@@ -1,10 +1,13 @@
 package uet.oop.dictionary.data;
 
 public class Definition {
+
+    public static final int ID_UNSET = -1;
     private int id;
     private String wordType;
     private String explain;
-    private int wordId = -1;
+    private int wordId = ID_UNSET;
+
 
     public Definition() {
     }

@@ -1,7 +1,5 @@
 package uet.oop.dictionary.dao;
 
-import uet.oop.dictionary.utils.Config;
-
 import java.io.Closeable;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,9 +31,9 @@ public abstract class BaseDao<T> implements Closeable {
         }
     }
 
-    public abstract boolean add(T data) throws SQLException;
-    public abstract boolean update(int id, T data) throws SQLException;
-    public abstract boolean delete(int id) throws SQLException;
+    public abstract void add(T data) throws SQLException;
+    public abstract void update(int id, T data) throws SQLException;
+    public abstract void delete(int id) throws SQLException;
     public abstract Optional<T> get(int id) throws SQLException;
     public abstract List<T> getAll(int limit) throws SQLException;
 

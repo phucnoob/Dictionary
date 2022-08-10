@@ -1,6 +1,5 @@
 package uet.oop.dictionary.dao;
 
-import javafx.scene.Parent;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +10,10 @@ import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DefinitionDaoTest {
 
@@ -24,7 +22,7 @@ class DefinitionDaoTest {
 
     @BeforeEach
     void init() throws SQLException {
-        Path path = Path.of("src/original/resources").toAbsolutePath();
+        Path path = Path.of("src/test/resources").toAbsolutePath();
         URL = String.format("jdbc:sqlite:%s", path.resolve("testdata.db"));
 
         conn = DriverManager.getConnection(URL);
@@ -32,29 +30,27 @@ class DefinitionDaoTest {
     }
 
     @Test
-    void add() {
+    void add() throws SQLException {
         DefinitionDao dao = new DefinitionDao(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
         w.setDefinitions(List.of(d));
 
-        boolean added = dao.add(d);
-        assertTrue(added);
+        dao.add(d);
         Definition found = dao.get(1).get();
         assertEquals("xin chao", found.getExplain());
     }
 
     @Test
-    void update() {
+    void update() throws SQLException {
         DefinitionDao dao = new DefinitionDao(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
         w.setDefinitions(List.of(d));
 
-        boolean added = dao.add(d);
-        assertTrue(added);
+        dao.add(d);
         d.setWordType("tinh tu");
 
         dao.update(1, d);
@@ -63,15 +59,14 @@ class DefinitionDaoTest {
     }
 
     @Test
-    void delete() {
+    void delete() throws SQLException {
         DefinitionDao dao = new DefinitionDao(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
         w.setDefinitions(List.of(d));
 
-        boolean added = dao.add(d);
-        assertTrue(added);
+        dao.add(d);
 
         dao.delete(1);
 
@@ -79,15 +74,14 @@ class DefinitionDaoTest {
     }
 
     @Test
-    void get() {
+    void get() throws SQLException {
         DefinitionDao dao = new DefinitionDao(conn);
 
         Word w = new Word("hello", "/hello/");
         Definition d = new Definition(1, "danh tu", "xin chao", 1);
         w.setDefinitions(List.of(d));
 
-        boolean added = dao.add(d);
-        assertTrue(added);
+        dao.add(d);
         Definition found = dao.get(1).get();
         assertEquals("xin chao", found.getExplain());
     }
@@ -106,12 +100,10 @@ class DefinitionDaoTest {
         Definition d5 = new Definition(1, "danh tu", "xin ch0-ao", 1);
         w.setDefinitions(List.of(d, d1, d2, d3, d4, d5));
 
-        boolean added = wordDao.add(w);
+        wordDao.add(w);
         for (var def: w.getDefinitions()) {
             definitionDao.add(def);
         }
-
-        assert added;
 
         List<Definition> definitions = definitionDao.getWordDefs(1);
 
@@ -119,7 +111,7 @@ class DefinitionDaoTest {
     }
 
     @Test
-    void getAll() {
+    void getAll() throws SQLException {
         DefinitionDao dao = new DefinitionDao(conn);
 
         Word w = new Word("hello", "/hello/");
@@ -131,13 +123,12 @@ class DefinitionDaoTest {
         Definition d5 = new Definition(1, "danh tu", "xin ch0-ao", 1);
         w.setDefinitions(List.of(d));
 
-        boolean added = dao.add(d);
+        dao.add(d);
         dao.add(d1);
         dao.add(d2);
         dao.add(d3);
         dao.add(d4);
         dao.add(d5);
-        assertTrue(added);
 
         List<Definition> defs = dao.getAll(3);
         assertEquals(3, defs.size());

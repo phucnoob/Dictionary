@@ -24,8 +24,10 @@ public class DefinitionDao extends BaseDao<Definition> {
     }
 
     @Override
-    public boolean add(Definition definition) {
-        if (Definition.isInValidDefinition(definition)) return false;
+    public void add(Definition definition) throws SQLException {
+        if (Definition.isInValidDefinition(definition)) {
+            throw new IllegalArgumentException("Definition is not valid.");
+        }
 
         String addDefinition = "INSERT INTO definitions(explain, type, word_id) VALUES (?, ?, ?);";
         try (var statement = getConn().prepareStatement(addDefinition)) {
@@ -35,16 +37,20 @@ public class DefinitionDao extends BaseDao<Definition> {
 
             int rowAffect = statement.executeUpdate();
 
-            return rowAffect > 0;
+            if (rowAffect <= 0) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Add definition operation failed. But no errors was found");
+            }
         } catch (SQLException e) {
-
+            throw new SQLException("Add definition failed.", e);
         }
-        return false;
     }
 
     @Override
-    public boolean update(int id, Definition definition) {
-        if (Definition.isInValidDefinition(definition)) return false;
+    public void update(int id, Definition definition) throws SQLException {
+        if (Definition.isInValidDefinition(definition)) {
+            throw new IllegalArgumentException("Definition is not valid.");
+        }
 
         String updateDefinition = "UPDATE definitions SET explain = ?, type = ?, word_id = ? WHERE definition_id = ?;";
         try (var statement = getConn().prepareStatement(updateDefinition)) {
@@ -55,26 +61,29 @@ public class DefinitionDao extends BaseDao<Definition> {
 
             int rowAffect = statement.executeUpdate();
 
-            return rowAffect > 0;
+            if (rowAffect < 0) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Update definition operation failed. But no errors was found");
+            }
         } catch (SQLException e) {
-
+            throw new SQLException("Update definition failed.", e);
         }
-        return false;
     }
 
     @Override
-    public boolean delete(int id) {
+    public void delete(int id) throws SQLException {
         String deleteDefinition = "DELETE FROM definitions WHERE definition_id = ?;";
         try (var statement = getConn().prepareStatement(deleteDefinition)) {
             statement.setInt(1, id);
             int rowAffect = statement.executeUpdate();
 
-            return rowAffect > 0;
+            if (rowAffect < 0) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Update definition operation failed. But no errors was found");
+            }
         } catch (SQLException e) {
-
+            throw new SQLException("Delete definition failed.", e);
         }
-
-        return false;
     }
 
     @Override

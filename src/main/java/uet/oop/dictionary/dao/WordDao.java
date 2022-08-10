@@ -21,9 +21,10 @@ public class WordDao extends BaseDao<Word> {
     }
 
     @Override
-    public boolean add(Word word) throws SQLException {
-        if (Word.isInValidWord(word)) return false;
-
+    public void add(Word word) throws SQLException {
+        if (Word.isInValidWord(word)) {
+            throw new IllegalArgumentException("Word is not valid to add.");
+        }
         String addWordSQL = "INSERT INTO words(target, phonetics) VALUES (?, ?);";
         try (var statement = getConn()
                 .prepareStatement(addWordSQL, Statement.RETURN_GENERATED_KEYS)) {
@@ -34,49 +35,53 @@ public class WordDao extends BaseDao<Word> {
                 ResultSet resultSet = statement.getGeneratedKeys();
                 resultSet.next();
                 word.setID(resultSet.getInt(1));
+            } else {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Add word operation failed. But no errors was found");
             }
-            return rowAffected > 0;
         } catch (SQLException e) {
-            Logger.getLogger(getClass().getName())
-                    .log(Level.SEVERE, e.getMessage(), e);
-
-            throw new SQLException("add word failed.", e);
+            throw new SQLException("Add word failed.", e);
         }
     }
 
     @Override
-    public boolean update(int id, Word word) throws SQLException {
-        if (Word.isInValidWord(word)) return false;
+    public void update(int id, Word word) throws SQLException {
+        if (Word.isInValidWord(word)) {
+            throw new IllegalArgumentException("Word is not valid to update.");
+        }
 
         String updateWordSQL = "UPDATE words SET target = ?, phonetics = ? WHERE word_id = ?;";
 
-        try (var statement = getConn().prepareStatement(updateWordSQL);) {
+        try (var statement = getConn().prepareStatement(updateWordSQL)) {
             statement.setString(1, word.getTarget());
             statement.setString(2, word.getPhonetics());
             statement.setInt(3, id);
+            int updated = statement.executeUpdate();
 
-            return statement.executeUpdate() > 0;
+            if (updated <= 0) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Update word operation failed. But no errors was found");
+            }
         } catch (SQLException e) {
-            Logger.getLogger(getClass().getName())
-                    .log(Level.SEVERE, e.getMessage(), e);
-
-            throw new SQLException("word translate failed.", e);
+            throw new SQLException("Word update failed.", e);
         }
     }
 
     @Override
-    public boolean delete(int id) {
+    public void delete(int id) throws SQLException {
         String deleteWordSQL = "DELETE FROM words WHERE word_id = ?;";
 
         try (var statement = getConn().prepareStatement(deleteWordSQL);) {
             statement.setInt(1, id);
-            return statement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            Logger.getLogger(getClass().getName())
-                    .log(Level.SEVERE, e.getMessage(), e);
-        }
+            int deleted = statement.executeUpdate();
 
-        return false;
+            if (deleted < 0) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.WARNING, "Delete operation failed. But no errors was found");
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Delete word failed.", e);
+        }
     }
 
     @Override

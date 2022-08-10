@@ -57,7 +57,7 @@ class WordDaoTest {
             word.setTarget("hello");
             word.setPhonetics("/hello/");
 
-            boolean updated = dao.update(id, word);
+            dao.update(id, word);
 
             Optional<Word> afterUpdate = dao.get(id);
 
@@ -78,9 +78,7 @@ class WordDaoTest {
             List<Word> words = dao.getAll(1);
             Word addedWord = words.get(0);
 
-            boolean deleted = dao.delete(addedWord.getID());
-
-            assertTrue(deleted);
+            dao.delete(addedWord.getID());
             assertEquals(dao.getAll(1), Collections.emptyList());
         } catch (SQLException e) {
             System.err.println(e.getMessage());

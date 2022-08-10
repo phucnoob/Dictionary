@@ -9,6 +9,7 @@ import uet.oop.dictionary.utils.Config;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -29,7 +30,6 @@ public class DictionaryService implements Dictionary {
     public DictionaryService() {
         try {
             conn = DriverManager.getConnection(Config.DATABASE_URL);
-            conn.setAutoCommit(false);
             wordDao = new WordDao(conn);
             definitionDao = new DefinitionDao(conn);
         } catch (SQLException e) {
@@ -39,7 +39,33 @@ public class DictionaryService implements Dictionary {
 
     @Override
     public boolean add(Word word) {
-        return false;
+
+        try {
+            conn.setAutoCommit(false);
+            wordDao.add(word);
+            int id = word.getID();
+
+            for (var def: word.getDefinitions()) {
+                def.setWordId(id);
+                definitionDao.add(def);
+            }
+
+            conn.commit();
+            conn.setAutoCommit(true);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(getClass().getName())
+                    .log(Level.SEVERE, "Add word failed.", ex);
+
+            try {
+                conn.rollback();
+                conn.setAutoCommit(true);
+            } catch (SQLException e) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.FINE, "Can't rollback, critical error!", e);
+            }
+            return false;
+        }
     }
 
     @Override
@@ -67,9 +93,53 @@ public class DictionaryService implements Dictionary {
         return false;
     }
 
+    public boolean update(int id, Word word) {
+        try {
+            getConn().setAutoCommit(false);
+            wordDao.update(id, word);
+            for (var definition: word.getDefinitions()) {
+                if (definition.getWordId() == Definition.ID_UNSET) {
+                    definitionDao.add(definition);
+                } else {
+                    definitionDao.update(definition.getId(), definition);
+                }
+            }
+            getConn().commit();
+            getConn().setAutoCommit(true);
+            return true;
+        } catch (SQLException e) {
+            Logger.getLogger(getClass().getName())
+                    .log(Level.SEVERE, "Can't update word has id " + id, e);
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.SEVERE, "Database can't rollback. Critical situation.");
+            }
+        }
+
+        return false;
+    }
+
     @Override
-    public boolean remove(String target) {
-        System.out.println("delete...");
+    public boolean delete(int id) {
+        try {
+            conn.setAutoCommit(false);
+            wordDao.delete(id);
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            return true;
+        } catch (SQLException e) {
+            Logger.getLogger(getClass().getName())
+                    .log(Level.SEVERE, "Can't delete word has id " + id, e);
+            try {
+                conn.rollback();
+            } catch (SQLException ex) {
+                Logger.getLogger(getClass().getName())
+                        .log(Level.SEVERE, "Database can't rollback. Critical situation.");
+            }
+        }
         return false;
     }
 
@@ -79,8 +149,20 @@ public class DictionaryService implements Dictionary {
     }
 
     @Override
-    public List<Word> getAll() {
-        return null;
+    public List<Word> getAll(int limit) {
+        try {
+            List<Word> words = wordDao.getAll(limit);
+            for (Word word: words) {
+                word.setDefinitions(definitionDao.getWordDefs(word.getID()));
+            }
+
+            return words;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return Collections.emptyList();
     }
 
     @Override
@@ -92,5 +174,9 @@ public class DictionaryService implements Dictionary {
         }
 
         return 0;
+    }
+
+    public Connection getConn() {
+        return conn;
     }
 }

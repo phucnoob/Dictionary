@@ -13,11 +13,11 @@ public interface Dictionary {
 
     boolean update(String target, Word word);
 
-    boolean remove(String target);
+    boolean delete(int id);
 
     List<Word> searchWord(String prefix);
 
-    List<Word> getAll();
+    List<Word> getAll(int limit);
 
     int totalWords();
 }

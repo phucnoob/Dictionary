@@ -108,7 +108,7 @@ public class WordSearchView extends VBox implements Initializable {
             ButtonType type = answer.get();
             if (type == ButtonType.OK) {
                 WordView wordView = (WordView) content.getContent();
-                dictionary.remove(wordView.getWord().getTarget());
+                dictionary.delete(wordView.getWord().getID());
                 content.setContent(null);
             }
         }

@@ -15,7 +15,6 @@ import uet.oop.dictionary.utils.Config;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SearchBar extends HBox implements Initializable {
@@ -27,7 +26,7 @@ public class SearchBar extends HBox implements Initializable {
 
 
     public SearchBar() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("search.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("search-bar.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
@@ -89,7 +88,5 @@ public class SearchBar extends HBox implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println(textField.getContextMenu().getStyleClass());
-        System.out.println(getStylesheets());
     }
 }

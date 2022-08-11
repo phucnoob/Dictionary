@@ -101,7 +101,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>uet.oop.dictionary/uet.oop.dictionary.HelloApplication</mainClass>
+                            <mainClass>uet.oop.dictionary/uet.oop.dictionary.DictionaryApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

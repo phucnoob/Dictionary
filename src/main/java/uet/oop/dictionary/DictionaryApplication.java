@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 
-public class HelloApplication extends Application {
+public class DictionaryApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
         URL view = HamburgerMenu.class.getResource("menu-view.fxml");
-        URL css = HelloApplication.class.getResource("css/main.css");
+        URL css = DictionaryApplication.class.getResource("css/main.css");
         FXMLLoader fxmlLoader = new FXMLLoader(view);
 
         Scene scene = new Scene(fxmlLoader.load(), 600, 600);

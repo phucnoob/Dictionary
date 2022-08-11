@@ -1,0 +1,14 @@
+.search-bar .search {
+    -fx-font-size: 22;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-background-color: #dfe6e9;
+    -fx-padding: 8;
+    -fx-border-style: solid;
+    -fx-border-width: 2;
+    -fx-border-color: transparent;
+}
+
+.search-bar .search:focused {
+    -fx-border-color: #2d3436;
+}

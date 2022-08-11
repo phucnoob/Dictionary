@@ -104,6 +104,6 @@ public class HamburgerMenu implements Initializable {
         initViewPane();
         initButtonsOnAction();
 
-        root.setCenter(allView.get(update));
+//        root.setCenter(allView.get(update));
     }
 }

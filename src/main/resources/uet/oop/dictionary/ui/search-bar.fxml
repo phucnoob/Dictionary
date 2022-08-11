@@ -10,7 +10,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ComboBox?>
 <fx:root type="javafx.scene.layout.HBox"
-         stylesheets="@../css/search.css"
+         stylesheets="@../css/search-bar.css"
          xmlns="http://javafx.com/javafx"
          styleClass="search-bar"
          xmlns:fx="http://javafx.com/fxml">

@@ -1,4 +1,8 @@
 
+* {
+    -fx-background-color: transparent;
+}
+
 .text-box {
     -fx-border-radius: 10;
     -fx-background-radius: 10;
@@ -64,14 +68,28 @@
     -fx-background-color: #282620;
 }
 
+.google-translate .combo-box .arrow {
+    -fx-background-color: #636e72;
+}
+
 .google-translate .combo-box-popup .list-view .list-cell {
     -fx-background-color: #2d3436;
     -fx-text-fill: #fff;
 }
 
+.google-translate .combo-box-popup .list-view {
+    -fx-background-color: #2d3436;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
 .google-translate .combo-box-popup .list-view .list-cell:hover {
     -fx-text-fill: #fff;
     -fx-background-color: #636e72;
+}
+
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
 }
 
 #stats {

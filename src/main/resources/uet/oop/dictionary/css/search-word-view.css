@@ -1,0 +1,13 @@
+.container {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.container * {
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.text-field * {
+    -fx-background-color: transparent;
+}

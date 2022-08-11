@@ -162,3 +162,30 @@
     -fx-icon-size: 20;
     -fx-icon-color: #b2bec3;
 }
+
+/* This css should belong to the searchbar.*/
+/* However, i don't know why css on context menu only
+ works if the css is load to the scene(this file).
+ Just a workaround.*/
+.context-menu {
+    -fx-background-color: #2d3436;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.context-menu * {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+.context-menu .label {
+    -fx-text-fill: #fff;
+}
+
+.context-menu .menu-item:focused {
+    -fx-background-color: #636e72;
+}
+
+.context-menu .menu-item:hover {
+    /*-fx-background-color: #636e72;*/
+}

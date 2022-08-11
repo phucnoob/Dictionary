@@ -6,6 +6,8 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.HBox?>
 <BorderPane fx:id="root"
             xmlns:fx="http://javafx.com/fxml"
             stylesheets="@../css/main.css"
@@ -39,7 +41,7 @@
         </VBox>
     </left>
     <center>
-        <VBox alignment="TOP_CENTER">
+        <VBox alignment="TOP_CENTER" spacing="8">
             <Label text="Dictionary App" style="-fx-font-size: 70" textAlignment="CENTER" wrapText="true">
                 <VBox.margin>
                     <Insets top="48"/>
@@ -48,8 +50,12 @@
                     <FontIcon iconLiteral="bi-bookmarks" iconSize="70"/>
                 </graphic>
             </Label>
-            <Label style="-fx-font-style: italic; -fx-text-fill: #dfe6e9; -fx-font-size: 14"
-                   textAlignment="RIGHT" text="Made by ppvan with love"/>
+            <HBox>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label style="-fx-font-style: italic; -fx-text-alignment: RIGHT; -fx-text-fill: #dfe6e9; -fx-font-size: 14"
+                       textAlignment="RIGHT" text="Made by ppvan with love"/>
+                <Region prefWidth="32"/>
+            </HBox>
         </VBox>
     </center>
 </BorderPane>

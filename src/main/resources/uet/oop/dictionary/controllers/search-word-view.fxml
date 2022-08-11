@@ -14,7 +14,7 @@
         <padding>
             <Insets bottom="4" />
         </padding>
-        <SearchBar stylesheets="@../css/search.css" fx:id="search" >
+        <SearchBar stylesheets="@../css/search-bar.css" fx:id="search" >
             <VBox.margin>
                 <Insets left="8" right="8" top="8" />
             </VBox.margin>

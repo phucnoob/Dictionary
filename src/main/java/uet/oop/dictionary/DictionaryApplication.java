@@ -22,7 +22,7 @@ public class DictionaryApplication extends Application {
         scene.setUserData(fxmlLoader.getController());
         scene.getStylesheets().add(Objects.requireNonNull(css).toExternalForm());
 
-        stage.setTitle("Hello!");
+        stage.setTitle("Dictionary App!");
         stage.setScene(scene);
         stage.setWidth(600);
         stage.setMaxHeight(800);

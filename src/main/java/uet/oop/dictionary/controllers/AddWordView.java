@@ -42,7 +42,7 @@ public class AddWordView extends VBox implements Initializable {
             System.err.println(ex.getMessage());
         }
 
-        dictionary = DictionaryService.DEFAULT;
+        dictionary = DictionaryService.getInstance();
     }
 
     @Override

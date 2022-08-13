@@ -1,14 +1,17 @@
 package uet.oop.dictionary.controllers;
 
 import javafx.animation.*;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import uet.oop.dictionary.services.DictionaryService;
 import uet.oop.dictionary.utils.Config;
 
 import java.net.URL;
@@ -98,12 +101,25 @@ public class HamburgerMenu implements Initializable {
         allView.put(update, new UpdateWordView());
     }
 
+    private void loadDatabaseService() {
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                // Init database...
+                DictionaryService.getInstance();
+                updateProgress(100, 100);
+                return null;
+            }
+        };
+
+        new Thread(task).start();
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         update = new Button();
+        loadDatabaseService();
         initViewPane();
         initButtonsOnAction();
-
-//        root.setCenter(allView.get(update));
     }
 }

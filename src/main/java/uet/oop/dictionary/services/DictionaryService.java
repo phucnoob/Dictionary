@@ -18,11 +18,18 @@ public class DictionaryService implements Dictionary {
     private final WordDAO wordDao;
     private final DefinitionDAO definitionDao;
 
+    private final SearchEngine searchEngine;
+
     private final Connection conn;
 
-    public static final DictionaryService DEFAULT;
-    static {
-        DEFAULT = new DictionaryService();
+    private static DictionaryService DEFAULT;
+
+    public static DictionaryService getInstance() {
+        if (DEFAULT == null) {
+            DEFAULT = new DictionaryService();
+        }
+
+        return DEFAULT;
     }
 
     public DictionaryService() {
@@ -34,6 +41,8 @@ public class DictionaryService implements Dictionary {
         } catch (SQLException e) {
             throw new RuntimeException("Application can not start." ,e);
         }
+
+        searchEngine = new TrieSearch();
     }
 
     @Override
@@ -146,6 +155,10 @@ public class DictionaryService implements Dictionary {
     @Override
     public List<Word> searchWord(String prefix) {
         return wordDao.prefixSearch(prefix);
+    }
+
+    public List<String> search(String prefix) {
+        return searchEngine.search(prefix);
     }
 
     @Override

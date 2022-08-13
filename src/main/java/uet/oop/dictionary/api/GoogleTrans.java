@@ -11,6 +11,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * The Google Translate implementation.
+ */
 public class GoogleTrans implements Translator {
     @Override
     public TranslatedData translate(LanguageCode src, LanguageCode dest, String text) {

@@ -4,7 +4,16 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+/**
+ * Speaker interface.
+ */
 public interface Speaker {
+    /**
+     * text to speech method
+     * @param word - the english word.
+     * @param accent - Speaker voice accent. ( Sport US and UK )
+     * @return SpeakerData
+     */
     SpeakerData speak(String word, Accent accent);
 
     default SpeakerData speak(String word) {

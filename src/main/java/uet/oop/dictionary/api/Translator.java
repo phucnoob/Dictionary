@@ -4,11 +4,13 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+/**
+ * Translator interface to translate document.
+ */
 public interface Translator {
     TranslatedData translate(Translator.LanguageCode src,
                      Translator.LanguageCode dest,
                      String text);
-
     enum LanguageCode {
         @JsonProperty("en")
         EN("en"),

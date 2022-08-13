@@ -10,6 +10,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import uet.oop.dictionary.DictionaryApplication;
+import uet.oop.dictionary.data.Trie;
 import uet.oop.dictionary.data.Word;
 import uet.oop.dictionary.services.DictionaryService;
 import uet.oop.dictionary.ui.CustomPopup;
@@ -19,6 +20,8 @@ import uet.oop.dictionary.utils.QuickToast;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -29,6 +32,7 @@ public class SearchWordView extends VBox implements Initializable {
     public Label label;
     public ScrollPane content;
     private DictionaryService dictionary;
+    private Trie trie;
 
     public SearchWordView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("search-word-view.fxml"));
@@ -45,10 +49,7 @@ public class SearchWordView extends VBox implements Initializable {
     public void autoComplete(String newValue) {
         if (newValue == null || newValue.isBlank()) return;
 
-        List<Word> suggestions = dictionary.searchWord(newValue);
-        List<String> context = suggestions.stream()
-                .map(Word::getTarget)
-                .collect(Collectors.toList());
+        List<String> context = dictionary.search(newValue);
 
         search.addSuggestions(context);
     }
@@ -92,7 +93,7 @@ public class SearchWordView extends VBox implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        dictionary = DictionaryService.DEFAULT;
+        dictionary = DictionaryService.getInstance();
 
         PauseTransition pause = new PauseTransition(Duration.millis(100));
         search.textProperty()
@@ -109,6 +110,18 @@ public class SearchWordView extends VBox implements Initializable {
 
         search.setOnAcceptSuggestion(this::handleAcceptSuggestion);
         search.textField.setOnAction(this::handleEnterDirectly);
+
+        try {
+            loadSearchData();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void loadSearchData() throws IOException {
+        trie = new Trie();
+        Files.lines(Path.of("/usr/share/dict/words"))
+                .forEach(trie::insert);
     }
 
     private void deleteWord() {

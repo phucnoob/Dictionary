@@ -21,7 +21,7 @@ if the window is too small (or big), please change your screen config to mine.
 - Maven (Optional)
 
 ## Build guide
-> To quickly understand the project, go the CONTRIBUTING.md
+> To quickly understand the project, go the [CONTRIBUTING.md](https://github.com/phucnoob/Dictionary/blob/main/CONTRIBUTING.md)
 ### IntelliJ<br>
 - Just clone this repo
   ```shell

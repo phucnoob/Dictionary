@@ -57,6 +57,22 @@
                        textAlignment="RIGHT" text="Made by ppvan with love"/>
                 <Region prefWidth="32"/>
             </HBox>
+
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                <VBox id="intro" spacing="8">
+                    <Label text="Feature" style="-fx-font-size: 36"/>
+                    <Label styleClass="li" text=" - Word CRUD"/>
+                    <Label styleClass="li" text=" - Quick search with Trie" />
+                    <Label styleClass="li" text=" - Google Translate" />
+                </VBox>
+
+                <VBox id="intro" spacing="8">
+                    <Label text="Technique" style="-fx-font-size: 36"/>
+                    <Label styleClass="li" text=" - Java OOP"/>
+                    <Label styleClass="li" text=" - MVC" />
+                    <Label styleClass="li" text=" - Singleton and Builder Pattern" />
+                </VBox>
+            </HBox>
         </VBox>
     </center>
 </BorderPane>

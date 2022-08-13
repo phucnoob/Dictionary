@@ -8,3 +8,38 @@
 - ui: Custom JavaFX widget
 - utils: convenient function and storing constants
 - DictionaryApplication: main class
+
+### Database Table
+```sqlite
+create table sqlite_master
+(
+    type     TEXT,
+    name     TEXT,
+    tbl_name TEXT,
+    rootpage INT,
+    sql      TEXT
+);
+
+create table words
+(
+    word_id   INTEGER
+        primary key,
+    target    TEXT not null
+        unique,
+    phonetics TEXT not null
+);
+
+create table definitions
+(
+    definition_id INTEGER
+        primary key,
+    explain       TEXT    not null,
+    type          TEXT    not null,
+    word_id       INTEGER not null
+        references words
+            on update cascade on delete cascade
+);
+
+create unique index idx_words_target
+    on words (target);
+```

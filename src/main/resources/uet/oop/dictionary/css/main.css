@@ -168,6 +168,22 @@
     -fx-icon-color: #b2bec3;
 }
 
+#intro {
+    -fx-background-color: transparent;
+    -fx-padding: 20 40 0 20;
+}
+
+#intro .label {
+    -fx-font-size: 18;
+    -fx-text-fill: #2d3436;
+    -fx-padding: 0 0 0 10;
+    -fx-wrap-text: true;
+}
+
+#intro .li {
+    -fx-padding: 0 0 0 20;
+}
+
 /* This css should belong to the searchbar.*/
 /* However, i don't know why css on context menu only
  works if the css is load to the scene(this file).

@@ -18,15 +18,15 @@ public class DictionaryApplication extends Application {
         URL css = DictionaryApplication.class.getResource("css/main.css");
         FXMLLoader fxmlLoader = new FXMLLoader(view);
 
-        Scene scene = new Scene(fxmlLoader.load(), 600, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 700, 600);
         scene.setUserData(fxmlLoader.getController());
         scene.getStylesheets().add(Objects.requireNonNull(css).toExternalForm());
 
         stage.setTitle("Dictionary App!");
         stage.setScene(scene);
-        stage.setWidth(600);
+        stage.setWidth(700);
         stage.setMaxHeight(800);
-        stage.setMinWidth(700);
+        stage.setMinWidth(600);
         stage.show();
     }
 

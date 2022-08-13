@@ -6,13 +6,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import uet.oop.dictionary.DictionaryApplication;
 import uet.oop.dictionary.data.Word;
 import uet.oop.dictionary.services.DictionaryService;
 import uet.oop.dictionary.ui.CustomPopup;
 import uet.oop.dictionary.ui.SearchBar;
 import uet.oop.dictionary.ui.WordView;
+import uet.oop.dictionary.utils.QuickToast;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,6 +23,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class SearchWordView extends VBox implements Initializable {
+
+    public Pane root;
     public SearchBar search;
     public Label label;
     public ScrollPane content;
@@ -66,7 +71,7 @@ public class SearchWordView extends VBox implements Initializable {
         if (word.isPresent()) {
             displayWord(word.get());
         } else {
-            System.out.println("Word not found..");
+            QuickToast.makeText(root, "Word not found.");
         }
     }
 
@@ -80,7 +85,7 @@ public class SearchWordView extends VBox implements Initializable {
         if (word.isPresent()) {
             displayWord(word.get());
         } else {
-            System.out.println("Word not found..");
+            QuickToast.makeText(root, "Word not found.");
         }
     }
 
@@ -111,6 +116,11 @@ public class SearchWordView extends VBox implements Initializable {
         alert.setHeaderText("You are about to delete a word.");
         alert.setTitle("Delete Word");
         alert.setContentText("This process is not recoverable. Are you sure?");
+
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets()
+                .add(DictionaryApplication.class
+                        .getResource("css/search-word-view.css").toExternalForm());
 
         Optional<ButtonType> answer = alert.showAndWait();
         if (answer.isPresent()) {

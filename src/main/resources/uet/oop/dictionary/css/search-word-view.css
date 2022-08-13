@@ -11,3 +11,37 @@
 .text-field * {
     -fx-background-color: transparent;
 }
+
+.dialog-pane {
+    -fx-background-color: #2d3436;
+}
+
+.dialog-pane *.header-panel {
+    -fx-background-color: transparent;
+}
+
+.dialog-pane *.header-panel .label {
+    -fx-text-fill: #dfe6e9;
+    -fx-font-size: 18;
+    -fx-font-family: Roboto;
+}
+
+.dialog-pane .label.content {
+    -fx-text-fill: #dfe6e9;
+    -fx-font-size: 14;
+    -fx-font-family: Roboto;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-text-fill: #dfe6e9;
+    -fx-background-color: #636e72;
+    -fx-cursor: HAND;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #222;
+}
+
+.dialog-pane .container {
+    -fx-background-color: #2d3436;
+}

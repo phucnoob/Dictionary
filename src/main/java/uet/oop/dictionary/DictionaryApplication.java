@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import uet.oop.dictionary.controllers.HamburgerMenu;
 
+import java.awt.im.InputContext;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -17,6 +18,11 @@ public class DictionaryApplication extends Application {
         URL view = HamburgerMenu.class.getResource("menu-view.fxml");
         URL css = DictionaryApplication.class.getResource("css/main.css");
         FXMLLoader fxmlLoader = new FXMLLoader(view);
+
+        // For some reason, i have to add this to make textfield work with Linux telex input method.
+        // E.g: able to type Vietnamese.
+        // Detailed at: https://bugs.openjdk.org/browse/JDK-8284530
+        InputContext.getInstance();
 
         Scene scene = new Scene(fxmlLoader.load(), 700, 600);
         scene.setUserData(fxmlLoader.getController());

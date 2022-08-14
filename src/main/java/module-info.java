@@ -2,6 +2,7 @@ module uet.oop.dictionary {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.media;
+    requires java.desktop;
 
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.ikonli.bootstrapicons;

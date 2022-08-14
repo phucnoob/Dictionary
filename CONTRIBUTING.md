@@ -3,7 +3,7 @@
 - commandline: commandline version (just ignore it)
 - dao: Data Access Object - Handle SQL operation.
 - services: use dao function to do the work UI request.
-- controllers: Use services to update data and update ui.
+- controllers: Used by services to update data and update ui.
 - data: Word and Definition bean object.
 - ui: Custom JavaFX widget
 - utils: convenient function and storing constants

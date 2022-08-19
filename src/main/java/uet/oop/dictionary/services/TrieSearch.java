@@ -19,16 +19,23 @@ public class TrieSearch implements SearchEngine {
     public TrieSearch() {
         inner = new Trie();
 
-        try (Connection conn = DriverManager.getConnection(Config.DATABASE_URL)) {
-            WordDAO dao = new WordDAO(conn);
-            dao.getAll(Integer.MAX_VALUE)
-                    .stream().map(Word::getTarget)
-                    .forEach( w -> inner.insert(w));
+        Runnable load = new Runnable() {
+            @Override
+            public void run() {
+                try (Connection conn = DriverManager.getConnection(Config.DATABASE_URL)) {
+                    WordDAO dao = new WordDAO(conn);
+                    dao.getAll(Integer.MAX_VALUE)
+                            .stream().map(Word::getTarget)
+                            .forEach( w -> inner.insert(w));
 
-            dao.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Fails to load trie search", ex);
-        }
+                    dao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, "Fails to load trie search", ex);
+                }
+            }
+        };
+
+        new Thread(load).start();
     }
 
     @Override

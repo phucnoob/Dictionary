@@ -24,7 +24,7 @@ public class DictionaryApplication extends Application {
         // Detailed at: https://bugs.openjdk.org/browse/JDK-8284530
         InputContext.getInstance();
 
-        Scene scene = new Scene(fxmlLoader.load(), 700, 600);
+        Scene scene = new Scene(fxmlLoader.load(), 720, 600);
         scene.setUserData(fxmlLoader.getController());
         scene.getStylesheets().add(Objects.requireNonNull(css).toExternalForm());
 

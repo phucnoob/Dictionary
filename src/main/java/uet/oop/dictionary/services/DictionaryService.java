@@ -38,11 +38,10 @@ public class DictionaryService implements Dictionary {
             setDataBase(conn);
             wordDao = new WordDAO(conn);
             definitionDao = new DefinitionDAO(conn);
+            searchEngine = new DataBaseSearch();
         } catch (SQLException e) {
             throw new RuntimeException("Application can not start." ,e);
         }
-
-        searchEngine = new TrieSearch();
     }
 
     @Override

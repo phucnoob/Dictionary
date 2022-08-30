@@ -1,6 +1,10 @@
 ## Dictionary App
 *This project is assigment for author university course*
 
+<p align="center">
+  <img src="https://github.com/phucnoob/Dictionary/blob/main/screenshot.png" />
+</p>
+
 ### It has two versions.
 
 This is the GUI written in JavaFX.<br>
